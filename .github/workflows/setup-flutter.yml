@@ -1,0 +1,26 @@
+name: Setup Flutter Project
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Create Flutter project structure
+        run: |
+          flutter create --project-name saint_alpha --org com.saintalpha .
+
+      - name: Show project
+        run: |
+          flutter pub get
+          flutter analyze
