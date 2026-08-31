@@ -16,11 +16,14 @@ jobs:
         with:
           channel: stable
 
-      - name: Create Flutter project structure
+      - name: Create temporary Flutter project
         run: |
+          mkdir /tmp/flutter_project
+          cd /tmp/flutter_project
           flutter create --project-name saint_alpha --org com.saintalpha .
 
-      - name: Show project
+      - name: Verify Flutter project
         run: |
+          cd /tmp/flutter_project
           flutter pub get
           flutter analyze
